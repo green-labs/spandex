@@ -19,12 +19,12 @@
     TrustStrategy)
    (org.apache.http.conn.ssl
     NoopHostnameVerifier)
-   (org.elasticsearch.client
+   (org.opensearch.client
     RestClient
     RestClientBuilder
     RestClientBuilder$RequestConfigCallback
     RestClientBuilder$HttpClientConfigCallback)
-   (org.elasticsearch.client.sniff
+   (org.opensearch.client.sniff
     SniffOnFailureListener)))
 
 (defn ssl-context-trust-all

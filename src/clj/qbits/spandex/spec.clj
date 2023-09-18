@@ -7,7 +7,7 @@
   (:import
    (java.net InetAddress)
    (javax.net.ssl SSLContext)
-   (org.elasticsearch.client
+   (org.opensearch.client
     NodeSelector
     RestClient
     RestClient$FailureListener)))

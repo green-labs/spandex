@@ -183,7 +183,7 @@
            (catch clojure.lang.ExceptionInfo ex
              (->> ex ex-data (instance? Response)))))
   (is (try (s/request client {:url "a/b/c/d/" :exception-handler #(throw %)})
-           (catch org.elasticsearch.client.ResponseException ex
+           (catch org.opensearch.client.ResponseException ex
              true)
            (catch Throwable _
              (.printStackTrace _)
@@ -193,7 +193,7 @@
        (instance? Response)
        is)
   (->> (async/<!! (s/request-chan client {:url "a/b/c/d/" :exception-handler identity}))
-       (instance? org.elasticsearch.client.ResponseException)
+       (instance? org.opensearch.client.ResponseException)
        is))
 
 (deftest chan->seq-test

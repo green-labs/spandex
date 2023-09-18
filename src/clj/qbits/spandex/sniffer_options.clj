@@ -1,6 +1,6 @@
 (ns qbits.spandex.sniffer-options
   (:import
-   (org.elasticsearch.client.sniff
+   (org.opensearch.client.sniff
     SnifferBuilder
     Sniffer)))
 

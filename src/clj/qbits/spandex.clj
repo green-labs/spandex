@@ -9,12 +9,12 @@
    [clojure.string :as str]
    [clojure.java.io :as io])
   (:import
-   (org.elasticsearch.client.sniff
+   (org.opensearch.client.sniff
     Sniffer
-    ElasticsearchNodesSniffer
-    ElasticsearchNodesSniffer$Scheme
+    OpenSearchNodesSniffer
+    OpenSearchNodesSniffer$Scheme
     SniffOnFailureListener)
-   (org.elasticsearch.client
+   (org.opensearch.client
     NodeSelector
     Request
     RequestOptions
@@ -85,7 +85,7 @@
   ([options]
    (client-options/builder options)))
 
-(def ^:no-doc sniffer-scheme (enum/enum->fn ElasticsearchNodesSniffer$Scheme))
+(def ^:no-doc sniffer-scheme (enum/enum->fn OpenSearchNodesSniffer$Scheme))
 
 (defn sniffer
   "Takes a Client instance (and possible sniffer options) and returns
@@ -109,8 +109,8 @@
   ([client {:as options
             :keys [scheme timeout]
             :or {scheme :http
-                 timeout ElasticsearchNodesSniffer/DEFAULT_SNIFF_REQUEST_TIMEOUT}}]
-   (let [sniffer (ElasticsearchNodesSniffer. client
+                 timeout OpenSearchNodesSniffer/DEFAULT_SNIFF_REQUEST_TIMEOUT}}]
+   (let [sniffer (OpenSearchNodesSniffer. client
                                              timeout
                                              (sniffer-scheme scheme))]
      (sniffer-options/builder client sniffer options))))
@@ -168,7 +168,7 @@
 (def default-headers {"Content-Type" "application/json; charset=UTF8"})
 
 (defn ^:no-doc response-headers
-  [^org.elasticsearch.client.Response response]
+  [^org.opensearch.client.Response response]
   (->> response
        .getHeaders
        (reduce (fn [m ^Header h]
@@ -193,13 +193,13 @@
           (str/index-of "gzip")))
 
 (defn ^:no-doc response-status
-  [^org.elasticsearch.client.Response response]
+  [^org.opensearch.client.Response response]
   (some-> response .getStatusLine .getStatusCode))
 
 (defrecord Response [body status headers hosts])
 
 (defn ^:no-doc response-decoder
-  [^org.elasticsearch.client.Response response keywordize?]
+  [^org.opensearch.client.Response response keywordize?]
   (let [entity (.getEntity response)
         content (when entity (.getContent entity))]
     (Response. (when content

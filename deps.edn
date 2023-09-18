@@ -8,8 +8,8 @@
  :deps
  {org.clojure/clojure {:mvn/version "1.11.1"}
   org.clojure/core.async {:mvn/version "1.6.681"}
-  org.elasticsearch.client/elasticsearch-rest-client {:mvn/version "8.10.0"}
-  org.elasticsearch.client/elasticsearch-rest-client-sniffer {:mvn/version "8.10.0"}
+  org.opensearch.client/opensearch-rest-client {:mvn/version "2.9.0"}
+  org.opensearch.client/opensearch-rest-client-sniffer {:mvn/version "2.9.0"}
   cc.qbits/commons {:mvn/version "0.5.2"}
   cheshire/cheshire {:mvn/version "5.11.0"}
   ring/ring-codec {:mvn/version "1.1.2"}}
