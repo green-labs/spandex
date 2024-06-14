@@ -8,8 +8,8 @@
  :deps
  {org.clojure/clojure {:mvn/version "1.11.1"}
   org.clojure/core.async {:mvn/version "1.6.681"}
-  org.opensearch.client/opensearch-rest-client {:mvn/version "2.9.0"}
-  org.opensearch.client/opensearch-rest-client-sniffer {:mvn/version "2.9.0"}
+  org.opensearch.client/opensearch-rest-client {:mvn/version "2.14.0"}
+  org.opensearch.client/opensearch-rest-client-sniffer {:mvn/version "2.14.0"}
   cc.qbits/commons {:mvn/version "0.5.2"}
   cheshire/cheshire {:mvn/version "5.11.0"}
   ring/ring-codec {:mvn/version "1.1.2"}}
@@ -20,6 +20,9 @@
  {:test {:extra-paths ["test"]
          :extra-deps {eftest/eftest {:mvn/version "0.6.0"}
                       orchestra/orchestra {:mvn/version "2021.01.01-1"}}}
+  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.10.4"}
+                 slipset/deps-deploy {:mvn/version "RELEASE"}}
+          :ns-default build}
   :project
   {:extra-deps {io.github.exoscale/tools.project {:git/sha "4ad527fac7bdc24f649404205ca31754339f856d"}}
    :ns-default exoscale.tools.project
